@@ -38,7 +38,7 @@ As expected, the overall performance of the baseline model is not satisfactory m
 To see how performance get improved by solving the two issues listed as above, you will be asked to build the following two predictive models:
 
 - **Model I**: this is a more sophisticated model (e.g. neural networks) than the baseline, while still treats the noisy labels as clean ones;
-- **Model II**: use exactly the same predictive model as in Model I, but add some extra models or procedures to address the label noise issue. You can replicate the method in  [Inoue et al. (2017)](https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w32/Inoue_Multi-Label_Fashion_Image_ICCV_2017_paper.pdf) (with some simplification if you wish), or you can explore some other methods in weakly supervised learning.
+- **Model II**: use exactly the same predictive model as in Model I, but add some extra models or procedures to address the label noise issue. You can replicate the method in  [Inoue et al. (2017)](https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w32/Inoue_Multi-Label_Fashion_Image_ICCV_2017_paper.pdf) (with some simplification if you wish), or you can explore some other methods for weakly supervised learning.
 
 
 
