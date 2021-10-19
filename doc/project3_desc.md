@@ -31,14 +31,14 @@ is provided in the starter code.
 
 
 
-As expected, the overall performance of the baseline model is not satisfactory mainly due to two reasons. The first reason is that the model and feature extractor we used is not sophisticated enough. The toyish model we used for baseline is barely for the purpose of illustrating the workflow of building a predictive models for CIFAR-10 dataset. Therefore, you should consider a more complex model that will give a better prediction performance. The second reason is that we treat the noisy labels with error as if they are clean. Therefore, the model is actually learning from a untrustful source. They are many approaches to address the second issue in the literature. For example, [Inoue et al. (2017)](https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w32/Inoue_Multi-Label_Fashion_Image_ICCV_2017_paper.pdf) suggests a "label-correction" approach - before feeding the training set to the predictive model, they use the small set with both clean and noisy label to train a label-correction model.  
+As expected, the overall performance of the baseline model is not satisfactory mainly due to two reasons. The first reason is that the model and feature extractor we used is not sophisticated enough. The toyish model we used for baseline is barely for the purpose of illustrating the workflow of building a predictive models for CIFAR-10 dataset. Therefore, you should consider a more complex model that will give a better prediction performance. The second reason is that we treat the noisy labels with error as if they are clean. Therefore, the model is actually learning from a untrustful source. There are many approaches to addressing the second issue in the literature. For example, [Inoue et al. (2017)](https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w32/Inoue_Multi-Label_Fashion_Image_ICCV_2017_paper.pdf) suggests a "label-correction" approach - before feeding the training set to the predictive model, they use the small set with both clean and noisy label to train a label-correction model.  
 
 
 
 To see how performance get improved by solving the two issues listed as above, you will be asked to build the following two predictive models:
 
 - **Model I**: this is a more sophisticated model (e.g. neural networks) than the baseline, while still treats the noisy labels as clean ones;
-- **Model II**: use exactly the same predictive model as in Model I, but add some extra models or procedures to address the label noise issue. You can and replicate the method in  [Inoue et al. (2017)](https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w32/Inoue_Multi-Label_Fashion_Image_ICCV_2017_paper.pdf) (with some simplification if you wish), or you can explore some other methods in weakly supervised learning.
+- **Model II**: use exactly the same predictive model as in Model I, but add some extra models or procedures to address the label noise issue. You can replicate the method in  [Inoue et al. (2017)](https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w32/Inoue_Multi-Label_Fashion_Image_ICCV_2017_paper.pdf) (with some simplification if you wish), or you can explore some other methods in weakly supervised learning.
 
 
 
