@@ -1,26 +1,28 @@
-# STAT GU4243/GR5243 Fall 2021 Applied Data Science 
+## STAT GU4243/GR5243 Fall 2021 Applied Data Science 
 
-## Project 3: Weakly supervised learning: label noise and correction
+### Project 3: Weakly supervised learning: label noise and correction
 
 
-
-In this project, we will be dealing with a classification problem, where the training labels are not perfect. This is a common phenomenon in data science. Getting accurate ground true labels can be costly and time-consuming. Sometimes, it is even impossible. The weakly supervised learning is a subject that addresses the issue with imperfect labels. In particular, we are going to train a predictive model where label noises exist. 
+In this project, we will carry out **model evaluation and selection** for predictive analytics on an imbalanced image data. As data scientists, we often need to **evaluate** different modeling/analysis strategies and decide what is the best. Such decisions need to be supported by sound evidence in the form of *model assessment, validation and comparison*. In addition, we also need to **communicate our decision and supporting evidence** clearly and convincingly in an accessible fashion.
+We will be dealing with a classification problem, where the training labels are not perfect. This is a common phenomenon in data science. Getting accurate ground true labels can be costly and time-consuming. Sometimes, it is even impossible. The weakly supervised learning is a subject that addresses the issue with imperfect labels. In particular, we are going to train a predictive model where label noises exist. 
 
 
 
 ##### Dataset
 
-A noisy version of "CIFAR-10" dataset will be provided. The original CIFAR-10 dataset consists of 32x32 colour images in 10 classes. For this task, random noises have been added to original dataset and you only have access to a small subset of clean labels. In particular, we provide a training set with 50000 images in the directory `../data/images/` with:
+A noisy version of "CIFAR-10" dataset will be provided (on piazza). The original CIFAR-10 dataset consists of 32x32 colour images in 10 classes. For this task, random noises have been added to original dataset and you only have access to a small subset of clean labels. In particular, we provide a training set with 50,000 images in the directory `../data/images/` with:
 - noisy labels for all images provided in `../data/noisy_label.csv`;
-- clean labels for the first 10000 images provided in `../data/clean_labels.csv`.
+- clean labels for the first 10,000 images provided in `../data/clean_labels.csv`.
 
 See the starter code for more details on loading and visualizing the data. 
 
 
 
-
-
 ##### Challenge
+
+Your client is interested in creating an mobile AI program that **accurately classifies the images**. 
+The portability of this AI program (holding storage and memory cost) and the computational efficiency (test running time cost) are of great concern to your client. This translates to a balance between the complexity of variable/features/models used and the predictive performance. 
+
 
 For this project, you are asked to build a predictive model for image classification using the imperfect dataset provided. A baseline logistic regression model that:
 
@@ -30,6 +32,7 @@ For this project, you are asked to build a predictive model for image classifica
 is provided in the starter code. 
 
 
+Assume that the **current practice (baseline)** on your client side is just using the logistic regression soley on the noisy data.
 
 As expected, the overall performance of the baseline model is not satisfactory mainly due to two reasons. The first reason is that the model and feature extractor we used is not sophisticated enough. The toyish model we used for baseline is barely for the purpose of illustrating the workflow of building a predictive models for CIFAR-10 dataset. Therefore, you should consider a more complex model that will give a better prediction performance. The second reason is that we treat the noisy labels with error as if they are clean. Therefore, the model is actually learning from a untrustful source. There are many approaches to addressing the second issue in the literature. For example, [Inoue et al. (2017)](https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w32/Inoue_Multi-Label_Fashion_Image_ICCV_2017_paper.pdf) suggests a "label-correction" approach - before feeding the training set to the predictive model, they use the small set with both clean and noisy label to train a label-correction model.  
 
@@ -42,7 +45,6 @@ To see how performance get improved by solving the two issues listed as above, y
 
 
 
-### 
 
 ##### Evaluation criteria
 
@@ -61,7 +63,32 @@ To see how performance get improved by solving the two issues listed as above, y
   - Is it supported by adequate and appropriate evidence?
   - Is the GitHub organized and prepared in a way that makes it easier for readers to understand the proposed strategies and its advantages and limitations?
 
+*(More details will be posted as grading rubrics in courseoworks/canvas)*
 
+
+#### Project details
+
+For this project, you are to carry out a business feasibility evaluation project that try to propose a **feasible** improvement over the current practice in terms of running cost (storage, memory and time) **and** prediction accuracy (average precision). 
+
+
+##### Final presentation
+For presentation, the team should present their **proposal** for an improvement and support this proposal with evidence on 
+
+- Performance improvement;
+- Running cost tradeoff;
+- Supporting evidence on why the proposed strategies make sense, such as intuitiveness of the weakly supervised strategy etc.
+
+The presentation can be technical but need to be accessible to your peer students in our class. 
+
+##### Platform requirement
+
+Your client will evalaute your report on a single personal computer that has `R` and `python` installed with 16GB memory.  
+ 
++ Your feature processing needs to be reasonably efficient as you will have **only 30 minutes to process 10,000 new images**. 
++ Your `main.ipynb`/`main.Rmd` should 
+	+ have a folder path as an input that point to the folder of training images. The folder structure of new images will have the same structure as the training data released to you (but without any labels);
+	+ and output a report on the performance (average precision and time cost) of the 3 models (*baseline*, *model I* and *model II*).
+	+ if you use tools outside `python`/`R`, please provide detailed instruction on the installation and use of these tools. 
 
 ##### Reproducibility requirement
 
@@ -78,7 +105,7 @@ GitHub_proj/
 ```
 
 - In `data`, team members should individually save raw image data and csv files that contains clean and noisy labels for the images on their local computer. 
-- The `doc` folder should have documentations for this project, presentation files and other supporting materials. You should have a final `main.ipynb` following the template given in the starter codes. Your `main.Rmd` can assume that there is a data folder of raw images outside the root with subfolders corresponding to the training set and the test set.
+- The `doc` folder should have documentations for this project, presentation files and other supporting materials. You should have a final `main.ipynb` or `main.Rmd` following the template given in the starter codes. Your `main.Rmd` can assume that there is a data folder of raw images with subfolders corresponding to the training set and the test set.
 - The `figs` folder contains figure files produced during the project and running of the codes.
 - The `output` folder is the holding place for feature extracted, other intermediate and final results.
 
@@ -113,3 +140,6 @@ The instructional team will download each team's GitHub repo and cross-examine e
 - The team can work with subgroups of 2-3 work together more frequently than the entire team. However, everyone should check in regularly on group discussion online and changes in the GitHub folder.  
 
 
+##### Example starter codes
+
+As example, you can find in the GitHub starter codes an example using logistic regression. 
